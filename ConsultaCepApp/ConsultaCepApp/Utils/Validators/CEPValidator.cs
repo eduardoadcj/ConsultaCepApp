@@ -8,7 +8,7 @@ namespace ConsultaCepApp.Utils.Validators {
         public static bool Validate(string cep) {
             bool lengthTest = cep.Length == 8;
             bool numberOnlyTest = int.TryParse(cep, out int n); // out - usado para passar a variavel como referencia
-            return lengthTest && numberOnlyTest || true;
+            return lengthTest && numberOnlyTest;
         }
     }
 }
