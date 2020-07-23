@@ -1,5 +1,6 @@
 ﻿using ConsultaCepApp.Service;
 using ConsultaCepApp.Service.Model;
+using ConsultaCepApp.Utils.Validators;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,6 +14,7 @@ namespace ConsultaCepApp {
     // by visiting https://aka.ms/xamarinforms-previewer
     [DesignTimeVisible(false)]
     public partial class MainPage : ContentPage {
+        
         public MainPage() {
             InitializeComponent();
             SearchButton.Clicked += buscarCEP;
@@ -20,8 +22,14 @@ namespace ConsultaCepApp {
 
         private void buscarCEP(object sender, EventArgs args) {
             string cep = CEP.Text.Trim();
-            Endereco end = ViaCepService.SearchEndereco(cep);
-            Result.Text = end.Print();
+
+            if (CEPValidator.Validate(cep)) {
+                Endereco end = ViaCepService.SearchEndereco(cep);
+                Result.Text = end.Print();
+            } else {
+                DisplayAlert("Falha na consulta!", "CEP inválido! O CEP é composto por 8 números.", "OK");
+            }
+            
         }
 
     }
