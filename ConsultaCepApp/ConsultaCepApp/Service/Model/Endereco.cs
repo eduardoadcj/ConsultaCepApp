@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace ConsultaCepApp.Service.Model {
-    class Endereco {
+    public class Endereco {
         public string cep { get; set; }
         public string logradouro { get; set; }
         public string complemento { get; set; }
