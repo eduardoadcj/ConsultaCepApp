@@ -13,5 +13,10 @@ namespace ConsultaCepApp.Service.Model {
         public string unidade { get; set; }
         public string ibge { get; set; }
         public string gia { get; set; }
+
+        public string Print() {
+            return string.Format("{0}, {1} - {2}", logradouro, localidade, uf);
+        }
+
     }
 }
