@@ -16,6 +16,10 @@ namespace ConsultaCepApp.Service {
             string Content = webClient.DownloadString(NewURL);
 
             Endereco end = JsonConvert.DeserializeObject<Endereco>(Content);
+            
+            if (end.cep == null)
+                return null;
+
             return end;
         }
 
